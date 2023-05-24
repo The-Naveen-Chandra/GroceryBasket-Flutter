@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocerybasket/model/cart_model.dart';
+import 'package:grocerybasket/theme/theme.dart';
 import 'package:provider/provider.dart';
 import 'pages/intro_page.dart';
 
@@ -14,9 +15,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => CartModel(),
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: IntroPage(),
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        home: const IntroPage(),
       ),
     );
   }

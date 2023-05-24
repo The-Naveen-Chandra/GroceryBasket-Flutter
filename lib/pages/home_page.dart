@@ -11,14 +11,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return CartPage();
+            return const CartPage();
           },
         )),
-        backgroundColor: Colors.black,
-        child: Icon(Icons.shopping_bag),
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
+        child: Icon(
+          Icons.shopping_bag,
+          color: Theme.of(context).colorScheme.secondary,
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -33,8 +37,8 @@ class HomePage extends StatelessWidget {
               child: Text(
                 'Good Morning,',
                 style: GoogleFonts.poppins(
-                  fontSize: 15,
-                  color: Colors.grey[600],
+                  fontSize: 18,
+                  color: Theme.of(context).colorScheme.tertiary,
                 ),
               ),
             ),
@@ -93,6 +97,7 @@ class HomePage extends StatelessWidget {
               child: Consumer<CartModel>(
                 builder: (context, value, child) {
                   return GridView.builder(
+                    physics: const BouncingScrollPhysics(),
                     itemCount: value.shopItems.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(

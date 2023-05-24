@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class GroceryItemTile extends StatelessWidget {
-
   final String itemName;
   final String itemPrice;
   final String imagePath;
@@ -11,7 +11,7 @@ class GroceryItemTile extends StatelessWidget {
 
   GroceryItemTile({
     super.key,
-    required this.itemName, 
+    required this.itemName,
     required this.itemPrice,
     required this.imagePath,
     required this.color,
@@ -29,9 +29,8 @@ class GroceryItemTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-           children: [
-
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
             // image paths
             Image.asset(
               imagePath,
@@ -41,24 +40,49 @@ class GroceryItemTile extends StatelessWidget {
             // item names
             Text(
               itemName,
-              style: GoogleFonts.poppins(),
+              style: GoogleFonts.poppins(
+                  color: Theme.of(context).colorScheme.primary),
             ),
 
             // price + button
-            MaterialButton(
+            // MaterialButton(
+            //   onPressed: onPressed,
+            //   color: color[800],
+            //   child: Text(
+            //     '₹ $itemPrice',
+            //     style: TextStyle(
+            //       color: Theme.of(context).colorScheme.secondary,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
+            TextButton(
               onPressed: onPressed,
-              color: color[800],
-              child: Text(
-                  '₹ $itemPrice',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+              style: ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll<Color>(
+                  color[800],
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
                 ),
               ),
-            )
+              // color: Colors.pink,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
+                child: Text(
+                  '₹ $itemPrice',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-} 
+}

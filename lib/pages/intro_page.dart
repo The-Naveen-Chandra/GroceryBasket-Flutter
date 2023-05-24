@@ -8,16 +8,13 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
           // logo
           Padding(
             padding: const EdgeInsets.only(
-              left: 80, 
-              right: 80,
-              bottom: 50,
-              top: 100
-            ),
+                left: 80, right: 80, bottom: 50, top: 100),
             child: Image.asset('lib/images/shopping-bag.png'),
           ),
 
@@ -35,8 +32,10 @@ class IntroPage extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 24,),
-          
+          const SizedBox(
+            height: 24,
+          ),
+
           // fresh item everyday
           Text(
             "GroceryBasket gives you fresh vegetables and fruits.          Order fresh items from groceer.",
@@ -51,24 +50,27 @@ class IntroPage extends StatelessWidget {
 
           // get started button
           GestureDetector(
-            onTap: ()=> Navigator.pushReplacement(context, MaterialPageRoute(
-              builder: (context) {
+            onTap: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
                   return const HomePage();
                 },
               ),
             ),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.deepPurple,
+                color: Theme.of(context).colorScheme.tertiary,
                 borderRadius: BorderRadius.circular(50),
               ),
               padding: const EdgeInsets.all(24),
-              child:  Text(
+              child: Text(
                 "Get Started",
                 style: GoogleFonts.poppins(
-                  color: Colors.white,
+                  fontSize: 16,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
-                ),
+              ),
             ),
           ),
 
